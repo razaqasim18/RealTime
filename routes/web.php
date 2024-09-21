@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\AdminLogin;
 use App\Events\Example;
 use App\Events\ExampleTwo;
 use App\Events\UserJoin;
@@ -13,9 +14,11 @@ Route::get('/', function () {
 
 
 Route::get('/broadcast', function () {
-    Broadcast(new UserJoin(User::find(2)));
-    sleep(5);
-    Broadcast(new UserJoin(User::find(1)));
+    // Broadcast(new UserJoin(User::find(2)));
+    // sleep(5);
+    // Broadcast(new UserJoin(User::find(1)));
+
+    broadcast(new AdminLogin("email has login", "1"));
     echo "broadcast";
 });
 

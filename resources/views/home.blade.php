@@ -33,5 +33,17 @@
 
             usersElement.appendChild(element);
         });
+
+        window.Echo.private('login.{{ auth()->user()->id }}').listen('AdminLogin', (event) => {
+            console.log(event);
+            const usersElement = document.getElementById('users');
+
+            let element = document.createElement('li');
+
+
+            element.innerText = event.message;
+
+            usersElement.appendChild(element);
+        });
     </script>
 @endsection

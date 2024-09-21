@@ -15,6 +15,11 @@ Broadcast::channel('join', function (User $user, $id) {
 });
 
 
+Broadcast::channel('login.{id}', function ($user, $userId) {
+    // Only authorize the user to listen to their own channel
+    return (int) $user->id === (int) $userId;
+});
+
 // Broadcast::channel('users.{id}', function ($user, $id) {
 //     return (int) 1 === (int) 1;
 // });
